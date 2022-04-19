@@ -47,6 +47,9 @@ def handler(c, m):
     if not m.text:
         return
 
+    if m.forward_date:
+        return
+
     if m.text == '.stat':
         client.edit_message_text(m.chat.id, m.message_id, gen_stat())
         return
