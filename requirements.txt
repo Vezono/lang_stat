@@ -1,0 +1,7 @@
+pyrogram
+textblob
+ety
+tgcrypto
+nltk
+langdetect
+emoji-country-flag
