@@ -33,12 +33,12 @@ def gen_stat():
 
     tiny_percentage = 0
     for lang in percentages:
-        if percentages[lang] >= 1:
+        if percentages[lang] <= 1:
             continue
         tiny_percentage = percentages[lang]
     
     for lang in percentages:
-        if percentages[lang] >= 1:
+        if percentages[lang] <= 1:
             continue
         tts += f'{detect_flag(lang)} - {percentages[lang]}%'+'\n'
     tts += f'🏴 - {tiny_percentage}%'
