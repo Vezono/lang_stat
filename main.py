@@ -30,9 +30,18 @@ def gen_stat():
 
     percentages = dict(sorted(percentages.items(),key= lambda x:x[1], reverse = True))
     tts = 'Статистика за мовами:\n'
+
+    tiny_percentage = 0
+    for lang in percentages:
+        if percentages[lang] >= 1:
+            continue
+        tiny_percentage = percentages[lang]
     
     for lang in percentages:
+        if percentages[lang] >= 1:
+            continue
         tts += f'{detect_flag(lang)} - {percentages[lang]}%'+'\n'
+    tts += f'🏴 - {tiny_percentage}%'
     return tts
 
 @client.on_message()
@@ -61,7 +70,7 @@ def handler(c, m):
         stats.update({lang: 0})
 
     stats.update({
-        lang: stats[lang]+1
+        lang: stats[lang]+len(m.text)
     })
 
     stat_file = open('stats.json', 'w')
