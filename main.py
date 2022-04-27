@@ -3,6 +3,13 @@ import json
 from langdetect import detect
 import flag
 from codes import codes
+from os.path import exists
+
+if not exists('stats.json'):
+    print('Файлу не було, тому створюю новий!')
+    stat_file = open('stats.json', 'x')
+    json.dump({}, stat_file)
+    stat_file.close()
 
 stats = dict()
 stat_file = open('stats.json')
